@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.0</version>
+        <version>2.7.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.contract.demo</groupId>
@@ -26,7 +26,20 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>9.6.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -62,7 +75,7 @@
                     <baseClassForTests>com.contract.demo.springcontractdemo.ContractBase</baseClassForTests>
                     <testFramework>JUNIT5</testFramework>
                     <contractsMode>LOCAL</contractsMode>
-                    <contractsDirectory>${project.basedir}/src/test/java/</contractsDirectory>
+                    <contractsDirectory>${project.basedir}/src/test/resources/contracts/</contractsDirectory>
                     <ignoredFiles>
                         <!--<ignoredFile>IgnoredContractName.groovy</ignoredFile>-->
                     </ignoredFiles>
@@ -71,6 +84,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
